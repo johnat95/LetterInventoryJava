@@ -4,7 +4,7 @@ public class Demo implements Runnable {
     public void run() {
         //initialize LetterInventories
         LetterInventory a = new LetterInventory("Isaac Newton1");
-        System.out.println("a inventory: " + a.toString());
+        System.out.println("a inventory: " + a.toString() + " Empty: "+ a.isEmpty());
 
         LetterInventory b = new LetterInventory("Michael Faraday%");
         System.out.println("b inventory: " + b.toString());

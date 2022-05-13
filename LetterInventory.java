@@ -10,7 +10,10 @@ public class LetterInventory {
 
     private String displayString;
 
-
+    //This constructor takes a string, converts it to lower case and
+    // creates a char[] from it. The array is then iterated through
+    // and each character counted each time it occurs, and its value
+    //is added to the size property.
     public LetterInventory(String string) {
 
         System.out.println("Processing: "+string);
@@ -20,7 +23,9 @@ public class LetterInventory {
         for (char c : charArray) {
 
             try {
-                incrementCountArray(isLetter(c));
+                //if the letter passes checks in isLetter
+                //the counter at the matching index will be incremented
+                incrementCountArray(indexFromLetter(c));
             }catch (IllegalArgumentException e){
                 System.out.println("'"+c+"'"+ " rejected.");
             }
@@ -32,7 +37,11 @@ public class LetterInventory {
         System.out.println("Output: "+displayString);
 
     }
-
+    //This constructor calculates the size of the inventory by iterating
+    // through the array, adding the valyue to the size property and appending
+    // the letter corresponding to the index for as many times as it occurs
+    // with a StringBuilder. The result of the string builder toString()
+    // method is then returned.
     public LetterInventory(int[] array) {
 
         this.countsArray = array;
@@ -75,6 +84,9 @@ public class LetterInventory {
         return this.countsArray;
     }
 
+    //_This method subtracts the count values of the LetterInventory passed to it
+    // and returns a new LetterInventory. If any of the counters are negative after
+    // subtraction this method returns null
     public LetterInventory subtract(LetterInventory other) throws Exception{
 
 
@@ -119,19 +131,8 @@ public class LetterInventory {
         this.displayString = stringBuilder.toString();
     }
 
-    private int indexFromLetter(int letterValue){
-
-        if(letterValue >= 'a' ){
-
-
-           return letterValue-'a';
-        }
-
-        return -1;
-    }
-
-
-    private int isLetter(char letter) {
+    //this method returns the index of the counts array corresponding to the letter passed to it.
+    private int indexFromLetter(char letter) {
 
        if(letter >= 'a' && letter <= 'z'){
 
@@ -149,11 +150,14 @@ public class LetterInventory {
         countsArray[index] = countsArray[index]+1;
     }
 
+    //Returns the displayString property of the LetterInventory class
     @Override
     public String toString() {
         return displayString;
     }
 
+    //This method adds the value of the char passed to it to the size
+    // property of the LetterInventory class_
     private void updateSize(int letterValue){
             size += letterValue;
     }
