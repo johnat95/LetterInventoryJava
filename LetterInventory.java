@@ -1,4 +1,10 @@
+//Programmer: Nathan Johnston
+//Date: 5/12/2022
+//Class: CS145
+//
 
+//This class contains methods to create instances of the LetterInventory, to add and subtract
+//inventories, keep tract of size and to display the contents of the inventory.
 
 public class LetterInventory {
 
@@ -30,7 +36,7 @@ public class LetterInventory {
                 System.out.println("'"+c+"'"+ " rejected.");
             }
             //add letter value to inventory size
-            updateSize(c);
+            size++;
 
         }
         generateDisplayString();
@@ -51,7 +57,7 @@ public class LetterInventory {
             //uses array parameter to calculate size and
             //displayString of the new inventory
             for (int i = 0; i < ALPHABET_LENGTH;i++) {
-                updateSize(array[i]*(i+1));
+                size += array[i];
             }
 
             generateDisplayString();
@@ -61,7 +67,8 @@ public class LetterInventory {
         }
 
     }
-
+    //Adds the count values at each index and fills a new countArray with the results,
+    // returns a new instance of LetterInventory constructed with the new array
     public LetterInventory add(LetterInventory other){
 
         int[] otherArray = other.getCountsArray();
@@ -82,6 +89,10 @@ public class LetterInventory {
 
     public int[] getCountsArray(){
         return this.countsArray;
+    }
+
+    public int getSize(){
+        return size;
     }
 
     //_This method subtracts the count values of the LetterInventory passed to it
@@ -110,11 +121,12 @@ public class LetterInventory {
 
 
     }
-
+    // returns true if size is zero
     public boolean isEmpty(){
         return size == 0;
     }
-
+    //This method initializes the displayString property with
+    //the characters int the counts array
     private void generateDisplayString(){
         StringBuilder stringBuilder = new StringBuilder();
         int charCount = 'a';
@@ -156,9 +168,4 @@ public class LetterInventory {
         return displayString;
     }
 
-    //This method adds the value of the char passed to it to the size
-    // property of the LetterInventory class_
-    private void updateSize(int letterValue){
-            size += letterValue;
-    }
 }

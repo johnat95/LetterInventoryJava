@@ -1,3 +1,9 @@
+//Programmer: Nathan Johnston
+//Date: 5/12/2022
+//Class: CS145
+//
+//This class contains a series of methods demonstrating the LetterInventory class.
+
 public class Demo implements Runnable {
 
     @Override
@@ -7,7 +13,7 @@ public class Demo implements Runnable {
         System.out.println("a inventory: " + a.toString() + " Empty: "+ a.isEmpty());
 
         LetterInventory b = new LetterInventory("Michael Faraday%");
-        System.out.println("b inventory: " + b.toString());
+        System.out.println("b inventory: " + b.toString() +" Size: "+ b.getSize());
 
         //test exception handling
         System.out.print("a - b: ");
